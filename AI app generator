@@ -1,0 +1,41 @@
+import streamlit as st
+import ollama  # Use Ollama instead of OpenAI
+
+def generate_frontend_code(app_name, description):
+    prompt = f"""
+    Generate a React frontend code for an application called {app_name}.
+    The application should have the following functionality:
+    {description}
+    """
+    response = ollama.chat(model="llama2", messages=[{"role": "system", "content": "You are an expert frontend developer."},
+                                                     {"role": "user", "content": prompt}])
+    return response["message"]["content"]  # Extract response content
+
+def generate_ml_code(task):
+    prompt = f"""
+    Generate a Python machine learning script for {task} using scikit-learn.
+    """
+    response = ollama.chat(model="llama2", messages=[{"role": "system", "content": "You are an expert machine learning engineer."},
+                                                     {"role": "user", "content": prompt}])
+    return response["message"]["content"]  # Extract response content
+
+def main():
+    st.title("AI-Powered Code Generator (Local with Llama 2)")
+    
+    app_name = st.text_input("Enter your app name:")
+    description = st.text_area("Describe the frontend functionality:")
+    task = st.text_area("Describe the machine learning task:")
+    
+    if st.button("Generate Code"):
+        if app_name and description:
+            frontend_code = generate_frontend_code(app_name, description)
+            st.subheader("Generated Frontend Code:")
+            st.code(frontend_code, language='javascript')
+        
+        if task:
+            ml_code = generate_ml_code(task)
+            st.subheader("Generated Machine Learning Code:")
+            st.code(ml_code, language='python')
+
+if __name__ == "__main__":
+    main()
