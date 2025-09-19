@@ -5,7 +5,7 @@ An AI-powered application generator that creates frontend React.js code and mach
 ✅ Frontend Code Generation – Creates React.js apps dynamically.
 ✅ Machine Learning Code Generation – Generates Python ML scripts using scikit-learn.
 ✅ Local AI Model Processing – Uses Llama 2 with Ollama for fast, offline AI responses.
-✅ Easy-to-Use UI – Powered by Streamlit for simple interaction.
+✅ Easy-to-Use UI – Powered by Streamlit for simple interaction
 
 🛠 Installation
 1️⃣ Install Dependencies
